@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I LOVE YOU</title> 
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #fce4ce;
+    }
+    .container { text-align: center; }
+    #valentine-gif { width: 250px; border-radius: 15px; margin-bottom: 20px; }
+    .buttons { display: flex; justify-content: center; align-items: center; gap: 20px }
+    #yesButton {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    #noButton {
+      background-color: #F54927;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="main-content">
+    <img id="valentine-gif" src="Love You Cat GIF.gif">
+    <h1>WILL YOU BE MY VALENTINE?</h1>
+    <div class="buttons">
+      <button id="yesButton" onclick="handleYesClick()">Yes</button>
+      <button id="noButton" onclick="handleNoClick()">No</button>
+    </div>
+  </div>
+
+  <script>
+    let messageIndex = 0;
+    const messages = [
+      "No", "PLEASE", "WHY NOT??", "I BEG YOU", "PLEASEEEEEE", "THINK AGAIN!!", "I'M ON MY KNEES! ;("
+    ];
+
+    function handleNoClick() {
+      const noBtn = document.getElementById('noButton');
+      const yesBtn = document.getElementById('yesButton');
+
+      // Update No button text
+      noBtn.innerText = messages[messageIndex];
+      messageIndex = (messageIndex + 1) % messages.length;
+
+      // Grow Yes button
+      const currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+      yesBtn.style.fontSize = (currentSize * 1.5) + "px";
+      yesBtn.style.padding = (parseFloat(window.getComputedStyle(yesBtn).padding) * 1.3) + "px";
+    }
+
+    function handleYesClick() {
+      document.getElementById('main-content').innerHTML = `
+        <img src="love2.gif">
+        <h1>YAYYYYY!! I LOVE YOU!!</h1>
+      `;
+    }
+  </script>
+</body>
+</html>
